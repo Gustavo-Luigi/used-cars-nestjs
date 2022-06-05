@@ -20,6 +20,10 @@ export class UsersService {
   }
 
   findOne(id: number) {
+    // Se id for null, findOne by Id retorna o primeiro que encontrar. Este if protege contra isso
+    if (!id) {
+      throw new NotFoundException('user not found');
+    }
     return this.repo.findOneBy({ id });
   }
 
