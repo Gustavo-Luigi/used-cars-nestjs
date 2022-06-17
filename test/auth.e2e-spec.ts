@@ -3,6 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
+// Usar max workers = 1 nos scripts dos testes, isso faz com que rode 1 teste por vez, evitando problemas com o banco de testes e melhorando desempenho.
 describe('Authentication System', () => {
   let app: INestApplication;
 
