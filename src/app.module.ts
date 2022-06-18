@@ -52,11 +52,15 @@ const cookieSession = require('cookie-session');
   exports: [TypeOrmModule],
 })
 export class AppModule {
+  constructor(
+    private configService: ConfigService
+  ){}
+
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(
         cookieSession({
-          keys: ['asfsadfas'],
+          keys: [this.configService.get('COOKIE_KEY')],
         }),
       )
       .forRoutes('*');
